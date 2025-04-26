@@ -6,6 +6,9 @@ import com.app.realtimechat.MainActivity
 import com.app.realtimechat.model.Message
 import com.app.realtimechat.utils.Constants
 import com.app.realtimechat.viewmodel.ChatViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.java_websocket.WebSocket
 import org.java_websocket.client.WebSocketClient
 import org.java_websocket.handshake.ServerHandshake
@@ -62,7 +65,9 @@ class SocketClient(private val viewModel: ChatViewModel,val context: Context) {
 
             }
             override fun onError(ex: Exception?) {
-                Constants.showAlert(context)
+                CoroutineScope(Dispatchers.Main).launch {
+                    Constants.showAlert(context)
+                }
             }
         }
         socket.connect()
