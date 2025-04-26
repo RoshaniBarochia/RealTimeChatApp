@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Example of adding a domain with SSL validation -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">wss://piehost.com/socket</domain>
+    </domain-config>
+
+    <!-- Optionally allow cleartext traffic for specific domains (insecure, avoid in production) -->
+    <!--
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">your-insecure-domain.com</domain>
+    </domain-config>
+    -->
+</network-security-config>
